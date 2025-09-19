@@ -1,0 +1,40 @@
+---
+title: "Visualization of HairEyeColor Dataset"
+author: "Chenyi Wang"
+format: pdf
+---
+
+## Introduction
+
+The `HairEyeColor` dataset from the R datasets package is a three-way contingency table.  
+It records the frequencies of combinations of **Hair color**, **Eye color**, and **Sex**.  
+This dataset is useful for exploring categorical distributions and group comparisons.
+
+
+
+## Visualization
+
+```{r}
+library(ggplot2)
+df <- as.data.frame(HairEyeColor)
+
+ggplot(df, aes(x = Hair, y = Freq, fill = Eye)) +
+  geom_col(position = "dodge") +
+  facet_wrap(~ Sex) +
+  labs(
+    title = "Hair Color × Eye Color × Sex",
+    x = "Hair Color", y = "Frequency", fill = "Eye Color"
+  ) +
+  theme_minimal(base_size = 12)
+```
+
+## Interpretation
+
+The plot shows the joint distribution of hair and eye color, separated by sex.  
+Overall, **Brown hair with Brown or Blue eyes** is most frequent.  
+Males and females display broadly similar patterns, though slight differences exist.  
+This visualization highlights how categorical variables can be compared across groups.
+
+
+
+
